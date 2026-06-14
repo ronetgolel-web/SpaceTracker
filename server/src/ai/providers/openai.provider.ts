@@ -70,7 +70,7 @@ export class OpenAIProvider extends BaseProvider {
 
     return {
       content: message.content || '',
-      toolCalls: message.tool_calls?.map(tc => ({
+      toolCalls: message.tool_calls?.map((tc: any) => ({
         id: tc.id,
         name: tc.function.name,
         arguments: JSON.parse(tc.function.arguments),
