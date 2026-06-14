@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "prisma generate && prisma migrate deploy && tsc",
     "dev": "nodemon --watch . --ext ts,json --exec tsx server.ts",
     "start": "tsc && node dist/server.js",
     "db:generate": "prisma generate",
