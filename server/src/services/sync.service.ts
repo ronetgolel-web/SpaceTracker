@@ -1,4 +1,4 @@
-import { AssetClass } from "@prisma/client";
+import type { AssetClass } from "@prisma/client";
 import { prisma } from "../lib/prisma.js";
 
 const baseUrl = "https://www.space-track.org";

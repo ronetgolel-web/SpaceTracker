@@ -1,6 +1,6 @@
 import { SpaceTool } from './tool-registry.js';
 import * as orbitalService from '../../services/orbital.service.js';
-import { AssetClass } from '@prisma/client';
+import type { AssetClass } from '@prisma/client';
 
 export const satelliteLookupTool: SpaceTool = {
   name: 'satellite_lookup',

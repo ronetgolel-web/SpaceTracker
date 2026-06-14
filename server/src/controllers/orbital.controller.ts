@@ -1,4 +1,4 @@
-import { AssetClass } from "@prisma/client";
+import type { AssetClass } from "@prisma/client";
 import { Request, Response } from "express";
 import * as orbitalService from "../services/orbital.service.js";
 import { runSyncJob } from "../jobs/sync.job.js";
@@ -71,7 +71,8 @@ function optionalString(value: unknown) {
 
 function optionalAssetClass(value: unknown) {
   if (value === undefined) return undefined;
-  if (typeof value !== "string" || !(value in AssetClass)) {
+  const valid = ["DEBRIS", "WEATHER", "COMMUNICATION", "NAVIGATION", "EARTH_OBSERVATION", "UNKNOWN", "OTHER", "CREWED"];
+  if (typeof value !== "string" || !valid.includes(value)) {
     throw Object.assign(new Error("assetClass is invalid"), { statusCode: 400 });
   }
   return value as AssetClass;

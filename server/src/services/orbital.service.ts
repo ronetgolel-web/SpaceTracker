@@ -1,4 +1,4 @@
-import { AssetClass, IlluminationState } from "@prisma/client";
+import type { AssetClass, IlluminationState } from "@prisma/client";
 import { prisma } from "../lib/prisma.js";
 import { deg2rad, normalizeLongitude, rad2deg, satellite } from "../lib/satellite.js";
 import { getLatestTleByCatalogNumber } from "./tle.service.js";
