@@ -14,7 +14,7 @@ export function AssetDetailPage() {
 
   useEffect(() => {
     if (!Number.isFinite(catalogNumber)) return
-    void Promise.all([getAsset(catalogNumber), getPosition(catalogNumber), getPasses(catalogNumber, latitude, longitude)])
+    void Promise.all([getAsset(catalogNumber), getPosition(catalogNumber), getPasses(catalogNumber, latitude ?? 0, longitude ?? 0)])
       .then(([assetData, positionData, passData]) => {
         setAsset(assetData)
         setPosition(positionData)

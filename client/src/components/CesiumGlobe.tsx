@@ -157,7 +157,7 @@ export function CesiumGlobe() {
             duration: 0.9,
             offset: new Cesium.HeadingPitchRange(0, -0.7, 1_400_000)
           }).then(() => {
-            viewer.trackedEntity = trackingEntityRef.current
+            viewer.trackedEntity = trackingEntityRef.current || undefined
           })
         }
       }
@@ -166,7 +166,7 @@ export function CesiumGlobe() {
     handler.setInputAction((movement: Cesium.ScreenSpaceEventHandler.PositionedEvent) => {
       const picked = viewer.scene.pick(movement.position)
       if (!Cesium.defined(picked)) {
-        setSelected(null)
+        setSelected(undefined)
         useGlobeStore.getState().setFilterCategory(null)
         useGlobeStore.getState().setTargetCatalogNumber(null)
         viewer.trackedEntity = undefined
@@ -422,7 +422,7 @@ export function CesiumGlobe() {
         if (!sel || !billboardMapRef.current) return undefined
         const b = billboardMapRef.current.get(sel.catalogNumber)
         return b ? b.position : undefined
-      }, false),
+      }, false) as any,
       point: { show: false }
     })
 
@@ -441,7 +441,7 @@ export function CesiumGlobe() {
           duration: 0.9,
           offset: new Cesium.HeadingPitchRange(0, -0.7, 1_400_000)
         }).then(() => {
-          if (viewerRef.current) viewerRef.current.trackedEntity = trackingEntityRef.current
+          if (viewerRef.current) viewerRef.current.trackedEntity = trackingEntityRef.current || undefined
         })
       }
     }

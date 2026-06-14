@@ -12,7 +12,7 @@ export function DashboardPage() {
 
   useEffect(() => {
     void listAssets().then(setAssets)
-    void getOverhead(latitude, longitude).then((items: unknown[]) => setVisibleCount(items.length)).catch(() => setVisibleCount(0))
+    void getOverhead(latitude ?? 0, longitude ?? 0).then((items: unknown[]) => setVisibleCount(items.length)).catch(() => setVisibleCount(0))
   }, [latitude, longitude])
 
   const counts = useMemo(() => ({

@@ -10,15 +10,15 @@ export function SettingsPage() {
       <section className="panel settings-form">
         <label>
           Latitude
-          <input type="number" step="0.000001" value={latitude} onChange={(event) => setLocation(Number(event.target.value), longitude)} />
+          <input type="number" step="0.000001" value={latitude ?? ''} onChange={(event) => setLocation(Number(event.target.value), longitude ?? 0)} />
         </label>
         <label>
           Longitude
-          <input type="number" step="0.000001" value={longitude} onChange={(event) => setLocation(latitude, Number(event.target.value))} />
+          <input type="number" step="0.000001" value={longitude ?? ''} onChange={(event) => setLocation(latitude ?? 0, Number(event.target.value))} />
         </label>
         <div className="actions">
           <button onClick={locate}><LocateFixed size={16} /> Use browser location</button>
-          <button onClick={() => setLocation(latitude, longitude)}><Save size={16} /> Save</button>
+          <button onClick={() => setLocation(latitude ?? 0, longitude ?? 0)}><Save size={16} /> Save</button>
         </div>
         <p>Status: {status}</p>
       </section>
