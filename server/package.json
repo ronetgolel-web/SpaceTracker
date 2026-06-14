@@ -12,7 +12,8 @@
     "db:migrate:dev": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
     "sync": "tsx src/jobs/run-sync.ts",
-    "test": "echo \"No automated server tests configured\" && exit 0"
+    "test": "echo \"No automated server tests configured\" && exit 0",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",

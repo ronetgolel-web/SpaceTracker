@@ -70,8 +70,8 @@ export class OpenRouterProvider extends BaseProvider {
 
     if (options?.enableWebSearch) {
       requestBody.tools = requestBody.tools || [];
-      requestBody.tools.push({
-        type: 'openrouter:web_search' as any
+      (requestBody.tools as any[]).push({
+        type: 'openrouter:web_search'
       });
     }
 
@@ -84,7 +84,7 @@ export class OpenRouterProvider extends BaseProvider {
 
     return {
       content: message.content || '',
-      toolCalls: message.tool_calls?.map(tc => ({
+      toolCalls: message.tool_calls?.map((tc: any) => ({
         id: tc.id,
         name: tc.function.name,
         arguments: JSON.parse(tc.function.arguments),
